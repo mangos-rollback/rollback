@@ -43,6 +43,7 @@ const char SpellFocusObjectfmt[]="nxxxxxxxxx";
 const char SpellItemEnchantmentfmt[]="niiiiiixxxiiissssssssxii";
 const char SpellShapeshiftfmt[]="nxxxxxxxxxxixx";
 const char SpellRangefmt[]="nffixxxxxxxxxxxxxxxxxx";
+const char MapEntryfmt[]="nxixssssssssxxxxxxxixxxxxxxxxxxxxxxxxxixxx";
 
 // endof correct for 1.12
 
@@ -80,7 +81,6 @@ const char ItemBagFamilyfmt[]="nxxxxxxxxxxxxxxxxx";
 const char ItemExtendedCostEntryfmt[]="niiiiiiiiiiiii";
 const char ItemRandomSuffixfmt[]="nxxxxxxxxxxxxxxxxxxiiiiii";
 const char LockEntryfmt[]="niiiiixxxiiiiixxxiixxxxxxxxxxxxxx";
-const char MapEntryfmt[]="nxixssssssssssssssssxxxxxxxixxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxixxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxiffiixxi";
 const char RandomPropertiesPointsfmt[]="niiiiiiiiiiiiiii";
 const char SkillLineAbilityfmt[]="niiiixxiiiiixxi";
 const char SoundEntriesfmt[]="nxxxxxxxxxxxxxxxxxxxxxxxxxxxx";

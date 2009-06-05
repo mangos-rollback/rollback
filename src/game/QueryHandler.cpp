@@ -289,7 +289,7 @@ void WorldSession::HandleCorpseQueryOpcode(WorldPacket & /*recv_data*/)
     float z = corpse->GetPositionZ();
     int32 corpsemapid = _player->GetMapId();
 
-    if(Map *map = MapManager::Instance().FindMap(corpse->GetMapId(), corpse->GetInstanceId()))
+    /*if(Map *map = MapManager::Instance().FindMap(corpse->GetMapId(), corpse->GetInstanceId()))
     {
         if(map->IsDungeon())
         {
@@ -303,7 +303,7 @@ void WorldSession::HandleCorpseQueryOpcode(WorldPacket & /*recv_data*/)
             z = entrance_map->GetHeight(x, y, MAX_HEIGHT);
             corpsemapid = corpse->GetMapId();
         }
-    }
+    }*/
 
     WorldPacket data(MSG_CORPSE_QUERY, 1+(5*4));
     data << uint8(1);                                       // corpse found

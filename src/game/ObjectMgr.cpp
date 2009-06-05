@@ -4062,14 +4062,14 @@ void ObjectMgr::LoadInstanceTemplate()
         if(temp->reset_delay == 0)
         {
             // use defaults from the DBC
-            if(entry->SupportsHeroicMode())
+            /*if(entry->SupportsHeroicMode())
             {
                 temp->reset_delay = entry->resetTimeHeroic / DAY;
             }
             else if (entry->resetTimeRaid && entry->map_type == MAP_RAID)
             {
                 temp->reset_delay = entry->resetTimeRaid / DAY;
-            }
+            }*/
         }
 
         // the reset_delay must be at least one day
@@ -4716,7 +4716,7 @@ WorldSafeLocsEntry const *ObjectMgr::GetClosestGraveYard(float x, float y, float
 
     // at entrance map for corpse map
     bool foundEntr = false;
-    float distEntr;
+    //float distEntr;
     WorldSafeLocsEntry const* entryEntr = NULL;
 
     // some where other
@@ -4744,10 +4744,10 @@ WorldSafeLocsEntry const *ObjectMgr::GetClosestGraveYard(float x, float y, float
         if(MapId != entry->map_id)
         {
             // if find graveyard at different map from where entrance placed (or no entrance data), use any first
-            if (!mapEntry ||
+            if (!mapEntry) /*||
                  mapEntry->entrance_map < 0 ||
                  mapEntry->entrance_map != entry->map_id ||
-                (mapEntry->entrance_x == 0 && mapEntry->entrance_y == 0))
+                (mapEntry->entrance_x == 0 && mapEntry->entrance_y == 0))*/
             {
                 // not have any corrdinates for check distance anyway
                 entryFar = entry;
@@ -4755,7 +4755,7 @@ WorldSafeLocsEntry const *ObjectMgr::GetClosestGraveYard(float x, float y, float
             }
 
             // at entrance map calculate distance (2D);
-            float dist2 = (entry->x - mapEntry->entrance_x)*(entry->x - mapEntry->entrance_x)
+            /*float dist2 = (entry->x - mapEntry->entrance_x)*(entry->x - mapEntry->entrance_x)
                 +(entry->y - mapEntry->entrance_y)*(entry->y - mapEntry->entrance_y);
             if(foundEntr)
             {
@@ -4770,7 +4770,7 @@ WorldSafeLocsEntry const *ObjectMgr::GetClosestGraveYard(float x, float y, float
                 foundEntr = true;
                 distEntr = dist2;
                 entryEntr = entry;
-            }
+            }*/
         }
         // find now nearest graveyard at same map
         else
@@ -4969,7 +4969,8 @@ void ObjectMgr::LoadAreaTriggerTeleports()
  */
 AreaTrigger const* ObjectMgr::GetGoBackTrigger(uint32 Map) const
 {
-    const MapEntry *mapEntry = sMapStore.LookupEntry(Map);
+    /* TEMPORARY
+	const MapEntry *mapEntry = sMapStore.LookupEntry(Map);
     if(!mapEntry) return NULL;
     for (AreaTriggerMap::const_iterator itr = mAreaTriggers.begin(); itr != mAreaTriggers.end(); ++itr)
     {
@@ -4979,7 +4980,7 @@ AreaTrigger const* ObjectMgr::GetGoBackTrigger(uint32 Map) const
             if(atEntry && atEntry->mapid == Map)
                 return &itr->second;
         }
-    }
+    }*/
     return NULL;
 }
 
