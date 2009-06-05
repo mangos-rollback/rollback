@@ -30,10 +30,10 @@ const char CharStartOutfitEntryfmt[]="diiiiiiiiiiiiixxxxxxxxxxxxxxxxxxxxxxxxxxx"
 const char CharTitlesEntryfmt[]="nxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxi";
 const char ChatChannelsEntryfmt[]="iixssssssssssssssssxx";
                                                             // ChatChannelsEntryfmt, index not used (more compact store)
-const char ChrClassesEntryfmt[]="nxixxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxix";
-const char ChrRacesEntryfmt[]="nxixiixxixxxxissssssssssssssssxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxi";
+const char ChrClassesEntryfmt[]="nxxixsxxxxxxxxxix";
+const char ChrRacesEntryfmt[]="nxixiixxixixxxisssssssssixxxx";
 const char CinematicSequencesEntryfmt[]="nxxxxxxxxx";
-const char CreatureDisplayInfofmt[]="nxxxfxxxxxxxxx";
+const char CreatureDisplayInfofmt[]="nxxxxxxxxfxx";
 const char CreatureFamilyfmt[]="nfifiiiissssssssssssssssxx";
 const char CreatureSpellDatafmt[]="niiiixxxx";
 const char DurabilityCostsfmt[]="niiiiiiiiiiiiiiiiiiiiiiiiiiiii";
