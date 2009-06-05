@@ -224,12 +224,12 @@ bool ChatHandler::HandleDebugPlayCinematicCommand(const char* args)
 
     uint32 dwId = atoi((char*)args);
 
-    if(!sCinematicSequencesStore.LookupEntry(dwId))
+    /*if(!sCinematicSequencesStore.LookupEntry(dwId))
     {
         PSendSysMessage(LANG_CINEMATIC_NOT_EXIST, dwId);
         SetSentErrorMessage(true);
         return false;
-    }
+    }*/
 
     m_session->GetPlayer()->SendCinematicStart(dwId);
     return true;
