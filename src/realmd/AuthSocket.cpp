@@ -43,8 +43,8 @@ enum eAuthCmd
     //AUTH_NO_CMD                 = 0xFF,
     AUTH_LOGON_CHALLENGE        = 0x00,
     AUTH_LOGON_PROOF            = 0x01,
-    AUTH_RECONNECT_CHALLENGE    = 0x02,
-    AUTH_RECONNECT_PROOF        = 0x03,
+    //AUTH_RECONNECT_CHALLENGE    = 0x02,
+    //AUTH_RECONNECT_PROOF        = 0x03,
     //update srv =4
     REALM_LIST                  = 0x10,
     XFER_INITIATE               = 0x30,
@@ -126,12 +126,12 @@ typedef struct AUTH_LOGON_PROOF_S
     uint8   cmd;
     uint8   error;
     uint8   M2[20];
-    uint32  unk1;
+    //uint32  unk1;
     uint32  unk2;
-    uint16  unk3;
+    //uint16  unk3;
 } sAuthLogonProof_S;
 
-typedef struct AUTH_RECONNECT_PROOF_C
+/*typedef struct AUTH_RECONNECT_PROOF_C
 {
     uint8   cmd;
     uint8   R1[16];
@@ -139,6 +139,7 @@ typedef struct AUTH_RECONNECT_PROOF_C
     uint8   R3[20];
     uint8   number_of_keys;
 } sAuthReconnectProof_C;
+*/
 
 typedef struct XFER_INIT
 {
@@ -207,8 +208,8 @@ const AuthHandler table[] =
 {
     { AUTH_LOGON_CHALLENGE,     STATUS_CONNECTED, &AuthSocket::_HandleLogonChallenge    },
     { AUTH_LOGON_PROOF,         STATUS_CONNECTED, &AuthSocket::_HandleLogonProof        },
-    { AUTH_RECONNECT_CHALLENGE, STATUS_CONNECTED, &AuthSocket::_HandleReconnectChallenge},
-    { AUTH_RECONNECT_PROOF,     STATUS_CONNECTED, &AuthSocket::_HandleReconnectProof    },
+    //{ AUTH_RECONNECT_CHALLENGE, STATUS_CONNECTED, &AuthSocket::_HandleReconnectChallenge},
+    //{ AUTH_RECONNECT_PROOF,     STATUS_CONNECTED, &AuthSocket::_HandleReconnectProof    },
     { REALM_LIST,               STATUS_AUTHED,    &AuthSocket::_HandleRealmList         },
     { XFER_ACCEPT,              STATUS_CONNECTED, &AuthSocket::_HandleXferAccept        },
     { XFER_RESUME,              STATUS_CONNECTED, &AuthSocket::_HandleXferResume        },
@@ -663,9 +664,9 @@ bool AuthSocket::_HandleLogonProof()
         memcpy(proof.M2, sha.GetDigest(), 20);
         proof.cmd = AUTH_LOGON_PROOF;
         proof.error = 0;
-        proof.unk1 = 0x00800000;
+        //proof.unk1 = 0x00800000;
         proof.unk2 = 0x00;
-        proof.unk3 = 0x00;
+        //proof.unk3 = 0x00;
 
         SendBuf((char *)&proof, sizeof(proof));
 
@@ -768,7 +769,7 @@ bool AuthSocket::_HandleReconnectChallenge()
 
     ///- Sending response
     ByteBuffer pkt;
-    pkt << (uint8)  AUTH_RECONNECT_CHALLENGE;
+    //pkt << (uint8)  AUTH_RECONNECT_CHALLENGE;
     pkt << (uint8)  0x00;
     _reconnectProof.SetRand(16*8);
     pkt.append(_reconnectProof.AsByteBuffer());             // 16 bytes random
@@ -778,7 +779,7 @@ bool AuthSocket::_HandleReconnectChallenge()
 }
 
 /// Reconnect Proof command handler
-bool AuthSocket::_HandleReconnectProof()
+/*bool AuthSocket::_HandleReconnectProof()
 {
     DEBUG_LOG("Entering _HandleReconnectProof");
     ///- Read the packet
@@ -818,7 +819,7 @@ bool AuthSocket::_HandleReconnectProof()
         SetCloseAndDelete();
         return false;
     }
-}
+}*/
 
 /// %Realm List command handler
 bool AuthSocket::_HandleRealmList()
@@ -850,7 +851,7 @@ bool AuthSocket::_HandleRealmList()
     ///- Circle through realms in the RealmList and construct the return packet (including # of user characters in each realm)
     ByteBuffer pkt;
     pkt << (uint32) 0;
-    pkt << (uint16) m_realmList.size();
+    pkt << (uint32) m_realmList.size();
     RealmList::RealmMap::const_iterator i;
     for( i = m_realmList.begin(); i != m_realmList.end(); i++ )
     {
@@ -877,10 +878,10 @@ bool AuthSocket::_HandleRealmList()
         pkt << i->second.populationLevel;
         pkt << AmountOfCharacters;
         pkt << i->second.timezone;                          // realm category
-        pkt << (uint8) 0x2C;                                // unk, may be realm number/id?
+        pkt << (uint8) 0x0;                                // unk, may be realm number/id?
     }
-    pkt << (uint8) 0x10;
     pkt << (uint8) 0x00;
+	pkt << (uint8) 0x02;
 
     ByteBuffer hdr;
     hdr << (uint8) REALM_LIST;
