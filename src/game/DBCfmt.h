@@ -19,16 +19,16 @@
 #ifndef MANGOS_DBCSFRM_H
 #define MANGOS_DBCSFRM_H
 
-const char AreaTableEntryfmt[]="iiinixxxxxissssssssssssssssxixxxxxx";
+const char AreaTableEntryfmt[]="iiinixxxxxisxxxxxxxxixxxx";
 const char AreaTriggerEntryfmt[]="niffffffff";
-const char AuctionHouseEntryfmt[]="niiixxxxxxxxxxxxxxxxx";
+const char AuctionHouseEntryfmt[]="niiixxxxxxxxx";
 const char BankBagSlotPricesEntryfmt[]="ni";
 const char BattlemasterListEntryfmt[]="niiixxxxxiiiixxssssssssssssssssxx";
 const char CharStartOutfitEntryfmt[]="diiiiiiiiiiiiixxxxxxxxxxxxxxxxxxxxxxxxxxx";
 // 3*12 new item fields in 3.0.x
 //const char CharStartOutfitEntryfmt[]="diiiiiiiiiiiiiiiiiiiiiiiiixxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
 const char CharTitlesEntryfmt[]="nxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxi";
-const char ChatChannelsEntryfmt[]="iixssssssssssssssssxxxxxxxxxxxxxxxxxx";
+const char ChatChannelsEntryfmt[]="iixssssssssssssssssxx";
                                                             // ChatChannelsEntryfmt, index not used (more compact store)
 const char ChrClassesEntryfmt[]="nxixxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxix";
 const char ChrRacesEntryfmt[]="nxixiixxixxxxissssssssssssssssxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxi";
