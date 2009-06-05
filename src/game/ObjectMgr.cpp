@@ -1583,12 +1583,12 @@ void ObjectMgr::LoadItemPrototypes()
                 if((proto->BagFamily & mask)==0)
                     continue;
 
-                ItemBagFamilyEntry const* bf = sItemBagFamilyStore.LookupEntry(j+1);
+                /*ItemBagFamilyEntry const* bf = sItemBagFamilyStore.LookupEntry(j+1);
                 if(!bf)
                 {
                     sLog.outErrorDb("Item (Entry: %u) has bag family bit set not listed in ItemBagFamily.dbc, remove bit",i);
                     const_cast<ItemPrototype*>(proto)->BagFamily &= ~mask;
-                }
+                }*/
             }
         }
 
@@ -4546,9 +4546,10 @@ uint16 ObjectMgr::GetTaxiMount( uint32 id, uint32 team, bool allowed_alt_team /*
     {
         if (team == ALLIANCE)
         {
-            mount_entry = node->MountCreatureID[1];
-            if(!mount_entry && allowed_alt_team)
-                mount_entry = node->MountCreatureID[0];
+            //mount_entry = node->MountCreatureID[1];
+			mount_entry = node->alliance_mount_type;
+            //if(!mount_entry && allowed_alt_team)
+            //    mount_entry = node->MountCreatureID[0];
 
             CreatureInfo const *ci = GetCreatureTemplate(mount_entry);
             if(ci)
@@ -4556,10 +4557,10 @@ uint16 ObjectMgr::GetTaxiMount( uint32 id, uint32 team, bool allowed_alt_team /*
         }
         if (team == HORDE)
         {
-            mount_entry = node->MountCreatureID[0];
-
-            if(!mount_entry && allowed_alt_team)
-                mount_entry = node->MountCreatureID[1];
+            //mount_entry = node->MountCreatureID[0]
+			mount_entry = node->horde_mount_type;
+            //if(!mount_entry && allowed_alt_team)
+            //    mount_entry = node->MountCreatureID[1];
 
             CreatureInfo const *ci = GetCreatureTemplate(mount_entry);
             if(ci)

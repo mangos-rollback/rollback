@@ -2948,7 +2948,8 @@ bool ChatHandler::HandleLookupObjectCommand(const char* args)
 
 bool ChatHandler::HandleLookupTaxiNodeCommand(const char * args)
 {
-    if(!*args)
+	// Fix later
+    /*if(!*args)
         return false;
 
     std::string namepart = args;
@@ -3004,7 +3005,7 @@ bool ChatHandler::HandleLookupTaxiNodeCommand(const char * args)
         }
     }
     if (counter == 0)                                       // if counter == 0 then we found nth
-        SendSysMessage(LANG_COMMAND_NOSPELLFOUND);
+        SendSysMessage(LANG_COMMAND_NOSPELLFOUND);*/
     return true;
 }
 

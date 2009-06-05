@@ -1194,7 +1194,7 @@ void WorldSession::HandleSocketOpcode(WorldPacket& recv_data)
         ItemPrototype const* iGemProto = Gems[i]->GetProto();
 
         // unique item (for new and already placed bit removed enchantments
-        if (iGemProto->Flags & ITEM_FLAGS_UNIQUE_EQUIPPED)
+        /*if (iGemProto->Flags & ITEM_FLAGS_UNIQUE_EQUIPPED)
         {
             for (int j = 0; j < MAX_GEM_SOCKETS; ++j)
             {
@@ -1222,7 +1222,7 @@ void WorldSession::HandleSocketOpcode(WorldPacket& recv_data)
                 }
 
             }
-        }
+        }*/
 
         // for equipped item check all equipment for duplicate equipped gems
         if(itemTarget->IsEquipped())
